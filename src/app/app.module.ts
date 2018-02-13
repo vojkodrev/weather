@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { UserInfoComponent } from './user-info/user-info.component';
+import { AppComponent } from './components/app/app.component';
+import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+
+import { NavigationVisibilityService } from './services/navigation-visibility/navigation-visibility.service';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    NavigationVisibilityService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

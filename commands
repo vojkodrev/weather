@@ -12,3 +12,4 @@ docker build -t weather-angular .
 ng generate module app-routing --flat --module=app
 ng serve
 ng generate component login
+ng generate service data

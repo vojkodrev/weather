@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NavigationVisibilityService } from '../../services/navigation-visibility/navigation-visibility.service';
+
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navigationVisibilityService: NavigationVisibilityService) {
+
+    navigationVisibilityService.visible = true;
+  }
 
   ngOnInit() {
   }
