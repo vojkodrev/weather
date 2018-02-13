@@ -1,0 +1,10 @@
+docker image ls
+
+docker ps -a
+docker container rm 1727eba7ffc0
+
+docker system prune
+
+docker run -p 8080:8080 weather-angular
+
+docker build -t weather-angular .

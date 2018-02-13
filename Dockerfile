@@ -4,7 +4,8 @@ WORKDIR /app
 
 ADD . /app
 
-RUN npm install @angular/cli http-server
+#RUN ls
+RUN npm install
 RUN "node_modules/@angular/cli/bin/ng" build
 
 EXPOSE 8080
