@@ -2,10 +2,13 @@ FROM node:latest
 
 WORKDIR /app
 
-ADD . /app
+COPY package.json /tmp/package.json
+RUN cd /tmp && npm install
+RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 
-#RUN ls
-RUN npm install
+WORKDIR /opt/app
+COPY . /opt/app
+
 RUN "node_modules/@angular/cli/bin/ng" build
 
 EXPOSE 8080
