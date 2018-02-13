@@ -8,3 +8,7 @@ docker system prune
 docker run -p 8080:8080 weather-angular
 
 docker build -t weather-angular .
+
+ng generate module app-routing --flat --module=app
+ng serve
+ng generate component login
