@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 
 import { NavigationVisibilityService } from './services/navigation-visibility/navigation-visibility.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
