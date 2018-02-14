@@ -1,9 +1,4 @@
 <span *ngIf="navigationVisibilityService.visible  ">
-  <!-- <h1>{{title}}</h1>
-  <nav>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/userInfo">User Info</a>
-  </nav> -->
 
   <div class="navigation">
     <div><h1>Weather</h1></div>
@@ -15,4 +10,6 @@
   </div>
 </span>
 
-<router-outlet></router-outlet>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
