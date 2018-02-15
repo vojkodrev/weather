@@ -1,9 +1,12 @@
-.dashboard {
-  background-color: rgb(1, 87, 155);
-  // background-image: url("https://tctechcrunch2011.files.wordpress.com/2015/08/clouds.jpg");
-  background-image: url("http://www.trbimg.com/img-56511adf/turbine/ct-chicago-winter-weather-1122-20151121");
+.content {
+  padding-top:118px;
+}
+
+.weather {
+  background-image: url("http://www.flitemedia.com/wp-content/uploads/2015/06/NLC-Panorama-3rd-July-2014-3-49am.jpg");
   background-size: cover;
   background-position: center;
+  background-color: rgb(1, 87, 155);
   box-sizing: border-box;
   color: rgb(51, 51, 51);
   display: block;
@@ -14,10 +17,104 @@
   margin-bottom: 0px;
   margin-left: 0px;
   margin-right: 0px;
-  margin-top: 118px;
+  margin-top: 0px;
   min-height: 600px;
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 16px;
+  >div {
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    height: 610px;
+    line-height: 22.005px;
+    margin-bottom: 0px;
+    margin-left: 103px;
+    margin-right: 103px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    position: relative;
+    .location {
+      box-sizing: border-box;
+      color: rgb(51, 51, 51);
+      display: block;
+      font-size: 15px;
+      font-weight: 400;
+      height: 40px;
+      line-height: 22.005px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      position: relative;
+      width: 972px;
+      z-index: 101;
+      >div {
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.25);
+        display: block;
+        float: left;
+        font-size: 15px;
+        font-weight: 400;
+        height: 40px;
+        line-height: 22.005px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 10px;
+        position: relative;
+        width: 300px;
+        >span {
+          box-sizing: border-box;
+          color: rgb(255, 255, 255);
+          cursor: pointer;
+          display: inline-block;
+          font-size: 15px;
+          font-weight: 400;
+          height: 22px;
+          line-height: 22.005px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          padding-bottom: 0px;
+          padding-left: 10px;
+          padding-right: 0px;
+          padding-top: 0px;
+          text-overflow: ellipsis;
+          vertical-align: top;
+          white-space: nowrap;
+          width: 275px;
+        }
+        >i {
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          display: inline-block;
+          padding: 3px;
+          top: -3px;
+          position: relative;
+          &.down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+          }
+        }
+      }
+    }
+  }
 }
