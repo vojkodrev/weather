@@ -8,10 +8,16 @@
       <li>User</li>
     </ul>
   </div>
+
+  <router-outlet></router-outlet>
+
+  <div class="footer">
+    <div class="small">2018 - Vojko Drev</div>
+  </div>
 </span>
 
-<router-outlet></router-outlet>
+<span *ngIf="!navigationVisibilityService.visible  ">
 
-<!-- <div class="footer">
-  <div class="small">2018 - Vojko Drev</div>
-</div> -->
+  <router-outlet></router-outlet>
+</span>
+
