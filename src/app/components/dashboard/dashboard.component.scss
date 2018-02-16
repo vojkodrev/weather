@@ -58,7 +58,6 @@
       padding-top: 0px;
       position: relative;
       width: 972px;
-
       >.field {
         box-sizing: border-box;
         background-color: rgba(255, 255, 255, 0.25);
@@ -113,7 +112,6 @@
           -webkit-transform: rotate(45deg);
         }
       }
-
       >.current-location {
         color: white;
         box-sizing: border-box;
@@ -140,8 +138,94 @@
         vertical-align: text-bottom;
         width: 30px;
       }
-
+    }
+    .top-info {
+      box-sizing: border-box;
+      clear: left;
+      color: rgb(255, 255, 255);
+      display: block;
+      font-size: 15px;
+      font-weight: 400;
+      height: 183px;
+      line-height: 22.005px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      position: relative;
+      white-space: nowrap;
+      .number {
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        direction: ltr;
+        display: inline-block;
+        font-size: 160px;
+        font-weight: 400;
+        height: 160px;
+        line-height: 160px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        white-space: nowrap;
+        width: 146.1px;
+      }
+      .unit {
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        font-size: 60px;
+        font-weight: 400;
+        height: 97.2px;
+        line-height: 70.02px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 15px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        vertical-align: top;
+        white-space: nowrap;
+        width: 60.4375px;
+        .alternative {
+          border-top-color: rgba(255, 255, 255, 0.5);
+          border-top-style: solid;
+          border-top-width: 1px;
+          box-sizing: border-box;
+          color: rgb(255, 255, 255);
+          cursor: pointer;
+          display: block;
+          font-size: 15px;
+          font-weight: 400;
+          height: 26.6px;
+          line-height: 22.005px;
+          margin-bottom: 0px;
+          margin-left: 23px;
+          margin-right: 0px;
+          margin-top: 1px;
+          opacity: 0.5;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 4px;
+          text-align: center;
+          text-decoration-color: rgb(255, 255, 255);
+          text-decoration-line: none;
+          text-decoration-style: solid;
+          white-space: nowrap;
+          width: 37.4375px;
+        }
+      }
     }
   }
 }
-
