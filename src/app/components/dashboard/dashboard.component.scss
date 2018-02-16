@@ -378,7 +378,7 @@
       padding-right: 0px;
       padding-top: 0px;
       width: 906px;
-      >span {
+      >.button {
         box-sizing: border-box;
         color: rgb(255, 255, 255);
         cursor: pointer;
@@ -471,6 +471,84 @@
           text-decoration-line: none;
           text-decoration-style: solid;
           width: 40px;
+        }
+      }
+      >ul {
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        display: block;
+        font-size: 0px;
+        font-weight: 400;
+        height: 172px;
+        line-height: 0px;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        white-space: nowrap;
+        width: 906px;
+        -webkit-margin-after: 0px;
+        -webkit-margin-before: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-margin-start: 0px;
+        -webkit-padding-start: 0px;
+        >li {
+          border-color: rgba(255, 255, 255, 0.25);
+          border-image-outset: 0px;
+          border-image-repeat: stretch;
+          border-image-slice: 100%;
+          border-image-source: none;
+          border-image-width: 1;
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          box-sizing: border-box;
+          color: rgb(255, 255, 255);
+          cursor: pointer;
+          display: inline-block;
+          font-size: 0px;
+          font-weight: 400;
+          height: 150.6px;
+          line-height: 0px;
+          list-style-image: none;
+          list-style-position: outside;
+          list-style-type: none;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 15px;
+          padding-left: 20px;
+          padding-right: 10px;
+          padding-top: 10px;
+          text-align: left;
+          text-decoration-color: rgb(255, 255, 255);
+          text-decoration-line: none;
+          text-decoration-style: solid;
+          transition-delay: 0s;
+          transition-duration: 0.4s;
+          transition-property: background-color;
+          transition-timing-function: ease;
+          white-space: nowrap;
+          width: 151px;
+          &.active {
+            border-style: solid;
+            border-width: 1px;
+            border-bottom-style: none;
+            border-bottom-width: 0px;
+          }
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
         }
       }
     }
