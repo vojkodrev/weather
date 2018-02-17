@@ -11,9 +11,26 @@ export interface IWeatherInfoMain {
   temp_min: number;
 }
 
+export interface IWeatherInfoWeather {
+  main: string;
+}
+
+export interface IWeatherInfoWind {
+  speed: number;
+}
+
+export interface IWeatherInfoSys {
+  sunrise: number;
+  sunset: number;
+}
+
 export interface IWeatherInfo {
   main: IWeatherInfoMain;
   name: string;
+  weather: IWeatherInfoWeather[];
+  visibility: number;
+  wind: IWeatherInfoWind;
+  sys: IWeatherInfoSys;
 }
 
 @Injectable()

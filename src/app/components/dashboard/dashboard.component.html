@@ -2,8 +2,8 @@
   <div>
     <div class="location">
       <div class="field">
-        <input type="text" class="{{getWeatherDataError ? 'error' : ''}}" placeholder="Location" [(ngModel)]="location">
-        <span class="oi oi-chevron-right"></span>
+        <input type="text" (keyup)="onLocationKeyUp($event)" class="{{getWeatherDataError ? 'error' : ''}}" placeholder="Location" [(ngModel)]="location">
+        <span class="oi oi-chevron-right" (click)="getWeatherForLocation()"></span>
       </div>
 
       <div class="current-location {{currentLocationError ? 'error' : ''}}" (click)="getWeatherForCurrentLocation()">
@@ -15,26 +15,28 @@
     <div class="top-info">
       <div class="temperature">
         <div class="number">
-          -8
+          {{temperature}}
         </div>
         <div class="unit">
-          °C
+          °{{openWeatherMapApiOptionsService.units == 'metric' ? 'C' : 'F'}}
           <div class="alternative">
-            °F
+            °{{openWeatherMapApiOptionsService.units == 'metric' ? 'F' : 'C'}}
           </div>
         </div>
       </div>
       <div class="details">
         <div class="title">
-          Sunny
+          {{weather}}
         </div>
         <ul>
-          <li><span>Feels Like</span> -8°</li>
-          <li><span>Wind</span> ENE 4 km/h</li>
-          <li><span>Barometer</span> 1023.00 mb</li>
-          <li><span>Visibility</span> 10 km</li>
-          <li><span>Humidity</span> 92%</li>
-          <li><span>Dew Point</span> -9°</li>
+          <!-- <li><span>Feels Like</span> -8°</li> -->
+          <li><span>Wind</span> {{wind}} km/h</li>
+          <li><span>Barometer</span> {{barometer}} mb</li>
+          <li><span>Visibility</span> {{visibility}} km</li>
+          <li><span>Humidity</span> {{humidity}}%</li>
+          <li><span>Sunrise</span> {{sunrise}}</li>
+          <li><span>Sunset</span> {{sunset}}</li>
+          <!-- <li><span>Dew Point</span> -9°</li> -->
         </ul>
       </div>
     </div>
