@@ -1,0 +1,16 @@
+<li class="dashboard-weather-list-item {{active ? 'active' : ''}}">
+  <div>
+    <div class="title">
+      {{day}} {{dayOfMonth}}
+    </div>
+    <img src="{{images[image]}}" />
+    <div class="percipitation">
+      <span class="oi oi-droplet"></span>
+      <span class="text">{{percipitation}}%</span>
+    </div>
+    <div class="temperatures">
+      <p class="high">{{high}}°</p>
+      <p class="low">{{low}}°</p>
+    </div>
+  </div>
+</li>

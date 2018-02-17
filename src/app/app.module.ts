@@ -10,6 +10,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 
 import { NavigationVisibilityService } from './services/navigation-visibility/navigation-visibility.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardWeatherListItemComponent } from './components/dashboard-weather-list-item/dashboard-weather-list-item.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppComponent,
     LoginComponent,
     UserInfoComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardWeatherListItemComponent
   ],
   imports: [
     BrowserModule,
