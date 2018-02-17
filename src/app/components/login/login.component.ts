@@ -1,4 +1,3 @@
-import {NgbPopover} from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 
@@ -15,8 +14,7 @@ export class LoginComponent implements OnInit {
 
   username: string;
   key: string;
-
-  @ViewChild('submitPopover') public submitPopover: NgbPopover;
+  hasErrors: boolean;
 
   constructor(
     private navigationVisibilityService: NavigationVisibilityService,
@@ -32,17 +30,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitPopover.close();
+    this.hasErrors = false;
     this.openWeatherMapApiOptionsService.key = this.key;
     
     this.currentWeatherDataService.getDataByCityName("Bangkok").subscribe(
       data => this.router.navigateByUrl("dashboard"),
-      error => {
-        this.submitPopover.open({
-          message: error.error.message,
-          code: error.error.cod
-        });
-      });
+      error => this.hasErrors = true);
   }
 
 }
