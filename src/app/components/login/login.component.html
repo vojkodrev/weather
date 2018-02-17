@@ -2,9 +2,9 @@
 
 <div class="login-modal-container">
   <h1>Login to Your Account</h1>
-  <form>
-    <input type="text" placeholder="Username">
-    <input type="text" placeholder="Password">
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="username" required name="username" placeholder="Username">
+    <input type="text" [(ngModel)]="key" name="key" required placeholder="OpenWeather API Key">
     <input type="submit" value="Login">
   </form>
 </div>

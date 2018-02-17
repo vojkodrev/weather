@@ -9,12 +9,19 @@ import { NavigationVisibilityService } from '../../services/navigation-visibilit
 })
 export class LoginComponent implements OnInit {
 
+  username: string;
+  key: string; 
+
   constructor(private navigationVisibilityService: NavigationVisibilityService) {
 
     navigationVisibilityService.visible = false;
   }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    alert(this.username + " " + this.key);
   }
 
 }
