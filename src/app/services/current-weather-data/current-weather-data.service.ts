@@ -13,6 +13,7 @@ export interface IWeatherInfoMain {
 
 export interface IWeatherInfo {
   main: IWeatherInfoMain;
+  name: string;
 }
 
 @Injectable()
@@ -26,6 +27,17 @@ export class CurrentWeatherDataService {
     return this.http.get<IWeatherInfo>("http://api.openweathermap.org/data/2.5/weather", {
       params: {
         "q": name,
+        "appid": this.weatherApiOptions.key,
+        "units": this.weatherApiOptions.units
+      }
+    })
+  }
+
+  getDataByCoordinates(lat: number, lon: number) {
+    return this.http.get<IWeatherInfo>("http://api.openweathermap.org/data/2.5/weather", {
+      params: {
+        "lat": lat.toString(),
+        "lon": lon.toString(),
         "appid": this.weatherApiOptions.key,
         "units": this.weatherApiOptions.units
       }

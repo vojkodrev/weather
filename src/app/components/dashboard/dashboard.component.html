@@ -2,11 +2,11 @@
   <div>
     <div class="location">
       <div class="field">
-        <input type="text" placeholder="Location">
+        <input type="text" class="{{getWeatherDataError ? 'error' : ''}}" placeholder="Location" [(ngModel)]="location">
         <span class="oi oi-chevron-right"></span>
       </div>
 
-      <div class="current-location {{locationError ? 'error' : ''}}" (click)="getWeatherForCurrentLocation()">
+      <div class="current-location {{currentLocationError ? 'error' : ''}}" (click)="getWeatherForCurrentLocation()">
         <span class="oi oi-location"></span>
       </div>
 

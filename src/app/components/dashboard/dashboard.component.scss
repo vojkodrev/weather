@@ -103,8 +103,12 @@
           &::placeholder {
             color: rgba($color: white, $alpha: 0.5)
           }
+          &.error {
+            color:red;
+          }
         }
         .oi-chevron-right {
+          cursor: pointer;
           padding:13px;
           display: inline-block;
           color: white;
@@ -146,6 +150,12 @@
         width: 30px;
         &.error {
           color: red;
+        }
+        &:hover {
+          color: rgba($color: white, $alpha: 0.5)
+        }
+        &:active {
+          color: rgba($color: white, $alpha: 0.25)
         }
       }
     }
