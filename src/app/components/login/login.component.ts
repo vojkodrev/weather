@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 
 import { NavigationVisibilityService } from '../../services/navigation-visibility/navigation-visibility.service';
-import { CurrentWeatherDataService, IWeatherInfo } from '../../services/current-weather-data/current-weather-data.service';
+import { OpenWeatherMapApiService, IWeatherInfo } from '../../services/open-weather-map-api/open-weather-map-api.service';
 import { OpenWeatherMapApiOptionsService } from "../../services/open-weather-map-api-options/open-weather-map-api-options.service";
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private navigationVisibilityService: NavigationVisibilityService,
-    private currentWeatherDataService: CurrentWeatherDataService,
+    private openWeatherMapApiService: OpenWeatherMapApiService,
     private openWeatherMapApiOptionsService: OpenWeatherMapApiOptionsService,
     private router: Router) {
 
@@ -33,9 +33,8 @@ export class LoginComponent implements OnInit {
     this.hasErrors = false;
     this.openWeatherMapApiOptionsService.key = this.key;
     
-    this.currentWeatherDataService.getDataByCityName("Bangkok").subscribe(
+    this.openWeatherMapApiService.getDailyForecastByCityName("Bangkok").subscribe(
       data => this.router.navigateByUrl("dashboard"),
       error => this.hasErrors = true);
   }
-
 }

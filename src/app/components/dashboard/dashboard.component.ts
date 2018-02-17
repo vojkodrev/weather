@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import { NavigationVisibilityService } from '../../services/navigation-visibility/navigation-visibility.service';
 import { OpenWeatherMapApiOptionsService } from "../../services/open-weather-map-api-options/open-weather-map-api-options.service";
 import { GeoLocationService } from "../../services/geo-location/geo-location.service";
-import { CurrentWeatherDataService, IWeatherInfo } from "../../services/current-weather-data/current-weather-data.service";
+import { OpenWeatherMapApiService, IWeatherInfo } from "../../services/open-weather-map-api/open-weather-map-api.service";
 
 import * as moment from 'moment';
 
@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
     private openWeatherMapApiOptionsService: OpenWeatherMapApiOptionsService,
     private router: Router,
     private geoLocationService: GeoLocationService,
-    private currentWeatherDataService: CurrentWeatherDataService) {
+    private openWeatherMapApiService: OpenWeatherMapApiService) {
       
     if (!openWeatherMapApiOptionsService.key) {
       router.navigateByUrl("login");
@@ -58,10 +58,10 @@ export class DashboardComponent implements OnInit {
       position => {
         console.log(position);
 
-        this.currentWeatherDataService.getDataByCoordinates(position.coords.latitude, position.coords.longitude).subscribe(
+        this.openWeatherMapApiService.getCurrentWeatherByCoordinates(position.coords.latitude, position.coords.longitude).subscribe(
           weatherData => {
             console.log(weatherData);
-            this.setWeatherData(weatherData);
+            this.setCurrentWeatherData(weatherData);
           },
           error => this.getWeatherDataError = true
         );
@@ -75,10 +75,10 @@ export class DashboardComponent implements OnInit {
     if (!this.location)
       return;
 
-    this.currentWeatherDataService.getDataByCityName(this.location).subscribe(
+    this.openWeatherMapApiService.getCurrentWeatherByCityName(this.location).subscribe(
       weatherData => {
         console.log(weatherData);
-        this.setWeatherData(weatherData);
+        this.setCurrentWeatherData(weatherData);
       },
       error => this.getWeatherDataError = true
     );
@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  setWeatherData(weatherData: IWeatherInfo) {
+  setCurrentWeatherData(weatherData: IWeatherInfo) {
     this.temperature = Math.round(weatherData.main.temp);
     this.location = weatherData.name;
     this.weather = weatherData.weather[0].main;

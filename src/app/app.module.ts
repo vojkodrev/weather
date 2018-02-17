@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavigationVisibilityService } from './services/navigation-visibility/navigation-visibility.service';
-import { CurrentWeatherDataService } from './services/current-weather-data/current-weather-data.service';
+import { OpenWeatherMapApiService } from './services/open-weather-map-api/open-weather-map-api.service';
 import { OpenWeatherMapApiOptionsService } from './services/open-weather-map-api-options/open-weather-map-api-options.service';
 import { GeoLocationService } from './services/geo-location/geo-location.service';
 
@@ -33,7 +33,7 @@ import { DashboardWeatherListItemComponent } from './components/dashboard-weathe
   ],
   providers: [
     NavigationVisibilityService,
-    CurrentWeatherDataService,
+    OpenWeatherMapApiService,
     OpenWeatherMapApiOptionsService,
     GeoLocationService
   ],

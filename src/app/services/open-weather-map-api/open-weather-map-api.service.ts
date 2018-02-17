@@ -34,13 +34,13 @@ export interface IWeatherInfo {
 }
 
 @Injectable()
-export class CurrentWeatherDataService {
+export class OpenWeatherMapApiService {
 
   constructor(
     private http: HttpClient,
     private weatherApiOptions: OpenWeatherMapApiOptionsService) { }
 
-  getDataByCityName(name: string) {
+  getCurrentWeatherByCityName(name: string) {
     return this.http.get<IWeatherInfo>("http://api.openweathermap.org/data/2.5/weather", {
       params: {
         "q": name,
@@ -50,7 +50,7 @@ export class CurrentWeatherDataService {
     })
   }
 
-  getDataByCoordinates(lat: number, lon: number) {
+  getCurrentWeatherByCoordinates(lat: number, lon: number) {
     return this.http.get<IWeatherInfo>("http://api.openweathermap.org/data/2.5/weather", {
       params: {
         "lat": lat.toString(),
@@ -61,4 +61,26 @@ export class CurrentWeatherDataService {
     })
   }
 
+  getDailyForecastByCityName(name: string) {
+    return this.http.get<IWeatherInfo>("http://api.openweathermap.org/data/2.5/forecast", {
+      params: {
+        "q": name,
+        "cnt": "5",
+        "appid": this.weatherApiOptions.key,
+        "units": this.weatherApiOptions.units
+      }
+    })
+  }
+
+  getDailyForecastByCoordinates(lat: number, lon: number) {
+    return this.http.get<IWeatherInfo>("http://api.openweathermap.org/data/2.5/forecast", {
+      params: {
+        "lat": lat.toString(),
+        "lon": lon.toString(),
+        "cnt": "5",
+        "appid": this.weatherApiOptions.key,
+        "units": this.weatherApiOptions.units
+      }
+    })
+  }
 }
