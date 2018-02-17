@@ -1,4 +1,4 @@
-<span *ngIf="navigationVisibilityService.visible  ">
+<span *ngIf="navigationVisibilityService.visible">
 
   <div class="navigation">
     <div><h1>Weather</h1></div>
@@ -8,16 +8,10 @@
       <li>User</li>
     </ul>
   </div>
-
-  <router-outlet></router-outlet>
-
-  <div class="footer">
-    <div class="small">2018 - Vojko Drev</div>
-  </div>
 </span>
 
-<span *ngIf="!navigationVisibilityService.visible  ">
+<router-outlet></router-outlet>
 
-  <router-outlet></router-outlet>
-</span>
-
+<div class="footer" *ngIf="navigationVisibilityService.visible">
+  <div class="small">2018 - Vojko Drev</div>
+</div>

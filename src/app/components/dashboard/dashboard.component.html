@@ -6,7 +6,7 @@
         <i></i>
       </div>
 
-      <div class="current-location">
+      <div class="current-location {{locationError ? 'error' : ''}}" (click)="getWeatherForCurrentLocation()">
         <span class="oi oi-location"></span>
       </div>
 

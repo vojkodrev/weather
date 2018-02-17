@@ -133,6 +133,9 @@
         text-decoration-style: solid;
         vertical-align: text-bottom;
         width: 30px;
+        &.error {
+          color: red;
+        }
       }
     }
     .top-info {
