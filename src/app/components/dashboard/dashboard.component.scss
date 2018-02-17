@@ -262,6 +262,9 @@
             text-decoration-style: solid;
             white-space: nowrap;
             width: 37.4375px;
+            &:active {
+              color: rgba($color: white, $alpha: 0.25)
+            }
           }
         }
       }

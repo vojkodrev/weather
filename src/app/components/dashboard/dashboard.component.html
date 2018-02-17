@@ -19,7 +19,7 @@
         </div>
         <div class="unit">
           °{{openWeatherMapApiOptionsService.units == 'metric' ? 'C' : 'F'}}
-          <div class="alternative">
+          <div class="alternative" (click)="switchUnits()">
             °{{openWeatherMapApiOptionsService.units == 'metric' ? 'F' : 'C'}}
           </div>
         </div>
@@ -29,14 +29,12 @@
           {{weather}}
         </div>
         <ul>
-          <!-- <li><span>Feels Like</span> -8°</li> -->
           <li><span>Wind</span> {{wind}} km/h</li>
           <li><span>Barometer</span> {{barometer}} mb</li>
           <li><span>Visibility</span> {{visibility}} km</li>
           <li><span>Humidity</span> {{humidity}}%</li>
           <li><span>Sunrise</span> {{sunrise}}</li>
           <li><span>Sunset</span> {{sunset}}</li>
-          <!-- <li><span>Dew Point</span> -9°</li> -->
         </ul>
       </div>
     </div>

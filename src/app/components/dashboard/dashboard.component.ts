@@ -72,6 +72,9 @@ export class DashboardComponent implements OnInit {
   getWeatherForLocation() {
     this.clearErrors();
 
+    if (!this.location)
+      return;
+
     this.currentWeatherDataService.getDataByCityName(this.location).subscribe(
       weatherData => {
         console.log(weatherData);
@@ -79,6 +82,16 @@ export class DashboardComponent implements OnInit {
       },
       error => this.getWeatherDataError = true
     );
+  }
+
+  switchUnits() {
+    if (this.openWeatherMapApiOptionsService.units == "metric") {
+      this.openWeatherMapApiOptionsService.units = "imperial";
+    } else {
+      this.openWeatherMapApiOptionsService.units = "metric";
+    }
+
+    this.getWeatherForLocation();
   }
 
   onLocationKeyUp(event: KeyboardEvent) {
