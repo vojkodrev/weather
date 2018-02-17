@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavigationVisibilityService } from '../../services/navigation-visibility/navigation-visibility.service';
+import { CurrentWeatherDataService, IWeatherInfo } from '../../services/current-weather-data/current-weather-data.service';
+import { OpenWeatherMapApiOptionsService } from "../../services/open-weather-map-api-options/open-weather-map-api-options.service";
 
 @Component({
   selector: 'app-login',
@@ -10,18 +12,29 @@ import { NavigationVisibilityService } from '../../services/navigation-visibilit
 export class LoginComponent implements OnInit {
 
   username: string;
-  key: string; 
+  key: string;
 
-  constructor(private navigationVisibilityService: NavigationVisibilityService) {
+  constructor(
+    private navigationVisibilityService: NavigationVisibilityService,
+    private currentWeatherDataService: CurrentWeatherDataService,
+    private openWeatherMapApiOptionsService: OpenWeatherMapApiOptionsService) {
 
     navigationVisibilityService.visible = false;
+
+    this.key = "e80e15a63f2344aa1d6e4d6ea2d2ea6e";
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    alert(this.username + " " + this.key);
+    this.openWeatherMapApiOptionsService.key = this.key;
+    
+    this.currentWeatherDataService.getDataByCityName("Bangkok").subscribe(
+      data => alert("login ok"),
+      error => {
+        alert("Login failed (" + error.error.cod + ")\n" + error.error.message)
+      });
   }
 
 }
