@@ -70,17 +70,18 @@
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
-        padding-top: 10px;
+        padding-top: 0px;
         position: relative;
         width: 300px;
-        >span {
+        >input[type="text"] {
           box-sizing: border-box;
+          background-color: rgba(0, 0, 0, 0);
           color: rgb(255, 255, 255);
-          cursor: pointer;
+          border-style: none;
           display: inline-block;
           font-size: 15px;
           font-weight: 400;
-          height: 22px;
+          height: 40px;
           line-height: 22.005px;
           margin-bottom: 0px;
           margin-left: 0px;
@@ -95,17 +96,27 @@
           text-overflow: ellipsis;
           vertical-align: top;
           white-space: nowrap;
-          width: 275px;
+          width: 255px;
+          &:focus {
+            outline: none;
+          }
+          &::placeholder {
+            color: rgba($color: white, $alpha: 0.5)
+          }
         }
-        >i {
-          border: solid white;
-          border-width: 0 3px 3px 0;
+        .oi-chevron-right {
+          padding:13px;
           display: inline-block;
-          padding: 3px;
-          top: -3px;
-          position: relative;
-          transform: rotate(45deg);
-          -webkit-transform: rotate(45deg);
+          color: white;
+          font-size: 15px;
+          height: 40px;
+          width: 40px;
+          &:hover {
+            color: rgba($color: white, $alpha: 0.5)
+          }
+          &:active {
+            color: rgba($color: white, $alpha: 0.25)
+          }
         }
       }
       >.current-location {
