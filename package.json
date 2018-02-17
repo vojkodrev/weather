@@ -26,6 +26,7 @@
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "http-server": "*",
+    "linqts": "^1.10.0",
     "moment": "^2.20.1",
     "open-iconic": "^1.1.1",
     "rxjs": "^5.5.6",

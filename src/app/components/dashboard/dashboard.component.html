@@ -43,9 +43,15 @@
       <span class="button left" href><span class="oi oi-chevron-left"></span></span>
       <span class="button right" href><span class="oi oi-chevron-right"></span></span>
       <ul>
-        <app-dashboard-weather-list-item day="FRI" dayOfMonth="17" image="sunny" percipitation="11" high="10" low="-1"></app-dashboard-weather-list-item>
-        <app-dashboard-weather-list-item active="true" day="SAT" dayOfMonth="18" image="raining" percipitation="9" high="2" low="-12"></app-dashboard-weather-list-item>
-        <app-dashboard-weather-list-item day="SUN" dayOfMonth="19" image="cloudy" percipitation="90" high="12" low="-19"></app-dashboard-weather-list-item>
+        <app-dashboard-weather-list-item 
+          *ngFor="let daily of dailyData" 
+          active="{{daily.active}}"
+          day="{{daily.dayOfWeek}}" 
+          dayOfMonth="{{daily.dayOfMonth}}" 
+          image="{{daily.image}}" 
+          percipitation="{{daily.humidity}}" 
+          high="{{daily.highTemp}}" 
+          low="{{daily.lowTemp}}"></app-dashboard-weather-list-item>
       </ul>
     </div>
   </div>

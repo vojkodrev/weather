@@ -16,10 +16,11 @@ export class DashboardWeatherListItemComponent implements OnInit {
   @Input() low: number;
 
   images = {
-    "cloudy": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBaGxJ.img?m=6&o=true&u=true&n=true&w=30&h=30",
-    "sunny": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBb3WX.img?m=6&o=true&u=true&n=true&w=30&h=30",
-    "raining": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBayJl.img?m=6&o=true&u=true&n=true&w=30&h=30",
-    "snowing": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBb49j.img?m=6&o=true&u=true&n=true&w=30&h=30",
+    "Clouds": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBaGxJ.img?m=6&o=true&u=true&n=true&w=30&h=30",
+    "Sun": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBb3WX.img?m=6&o=true&u=true&n=true&w=30&h=30",
+    "Rain": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBayJl.img?m=6&o=true&u=true&n=true&w=30&h=30",
+    "Snow": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBb49j.img?m=6&o=true&u=true&n=true&w=30&h=30",
+    "Clear": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBb3WX.img?m=6&o=true&u=true&n=true&w=30&h=30",
   };
 
   constructor() { }
