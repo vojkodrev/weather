@@ -55,7 +55,8 @@
           image="{{daily.image}}" 
           percipitation="{{daily.humidity}}" 
           high="{{daily.highTemp}}" 
-          low="{{daily.lowTemp}}"></app-dashboard-weather-list-item>
+          low="{{daily.lowTemp}}"
+          (click)="drawChartAndActivate(daily)"></app-dashboard-weather-list-item>
       </ul>
     </div>
 

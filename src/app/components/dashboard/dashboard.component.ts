@@ -82,20 +82,26 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  drawChartAndActivate(info: DisplayableDailyWeatherInfo) {
+    this.dailyData.forEach(i => i.active = undefined);
+    info.active = true;
+
     console.log(this.chart);
 
     let ctx = (<HTMLCanvasElement> this.chart.nativeElement).getContext("2d");
     new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["2", "3", "4", "5"],
+        labels: info.chartLabels,// ["2", "3", "4", "5"],
         datasets: [{
           borderColor:"white",
           pointBackgroundColor: "white",
           backgroundColor: "rgba(100, 116, 137, 0.5)",
-          fill: true,
+          fill: "start",
           borderWidth: 1,
-          data:[4, 2, 3, 1],
+          data: info.chartValues,//[4, 2, 3, 1],
         }]
       },
       options: {
@@ -121,9 +127,6 @@ export class DashboardComponent implements OnInit {
         layout: {
           padding: {
             top: 20,
-            bottom: 10,
-            left: 10,
-            right: 20
           },
         },
         scales: {
@@ -144,8 +147,8 @@ export class DashboardComponent implements OnInit {
               fontColor: "rgba(255, 255, 255, 0.6)",
               fontFamily: "Segoe UI",
               fontSize: 0,
-              min: 0,
-              max: 5,
+              min: new List(info.chartValues).Min() - 1,
+              max: new List(info.chartValues).Max() + 1,
             },
             gridLines : {
               display : false,
@@ -162,6 +165,7 @@ export class DashboardComponent implements OnInit {
               size: "20"
             },
             align:"end",
+            formatter: v => Math.round(v) + "°"
 					}
 				},
       }
@@ -229,7 +233,7 @@ export class DashboardComponent implements OnInit {
       console.log(displayableDay);
     }
     
-    this.dailyData[0].active = true;
+    this.drawChartAndActivate(this.dailyData[0]);
   }
 
   getKeyWithMaxElements(dict: {[key: string]: any[]}): string {
