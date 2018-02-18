@@ -65,6 +65,7 @@ export class DashboardComponent implements OnInit {
       "Clear": sanitizer.bypassSecurityTrustStyle("url('https://yim108.files.wordpress.com/2012/02/img_8715.jpg')"),
       "Mist": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
       "Fog": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
+      "Default": sanitizer.bypassSecurityTrustStyle("url('http://www.flitemedia.com/wp-content/uploads/2015/06/NLC-Panorama-3rd-July-2014-3-49am.jpg')"),
     };
 
     navigationVisibilityService.visible = true;
