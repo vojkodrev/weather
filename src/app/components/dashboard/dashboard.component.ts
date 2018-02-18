@@ -73,6 +73,7 @@ export class DashboardComponent implements OnInit {
       "Mist": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
       "Fog": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
       "Default": sanitizer.bypassSecurityTrustStyle("url('http://www.flitemedia.com/wp-content/uploads/2015/06/NLC-Panorama-3rd-July-2014-3-49am.jpg')"),
+      "Haze": sanitizer.bypassSecurityTrustStyle("url('https://www.thenational.ae/image/policy:1.704756:1518668101/weather.JPG?f=16x9&w=1200&$p$f$w=4343fc7')"),
     };
 
     navigationVisibilityService.visible = true;
@@ -88,7 +89,7 @@ export class DashboardComponent implements OnInit {
     this.dailyData.forEach(i => i.active = undefined);
     info.active = true;
 
-    console.log(this.chart);
+    // console.log(this.chart);
 
     let ctx = (<HTMLCanvasElement> this.chart.nativeElement).getContext("2d");
     new Chart(ctx, {
@@ -205,17 +206,17 @@ export class DashboardComponent implements OnInit {
     this.dailyData = new Array();
     
     let groupsByDay: {[key: string]: [IForecastInfo3h]} = new List(dailyDataResponse.list).GroupBy(i => moment(i.dt * 1000).format("YYYYMMDD"), i => i);
-    console.log("groups", groupsByDay);
+    // console.log("groups", groupsByDay);
     for (let key in groupsByDay) {
       
       let displayableDay = new DisplayableDailyWeatherInfo();
       this.dailyData.push(displayableDay);
 
       let day = groupsByDay[key];
-      console.log(day);
+      // console.log(day);
 
       for (let item of day) {
-        console.log(item);
+        // console.log(item);
         displayableDay.chartLabels.push(moment(item.dt * 1000).format("ha"));
         displayableDay.chartValues.push(item.main.temp);
       }
@@ -230,7 +231,7 @@ export class DashboardComponent implements OnInit {
       displayableDay.humidity = Math.round(dayList.Select(i => i.main.humidity).Max());
       displayableDay.image = this.getKeyWithMaxElements(dayList.GroupBy(i => i.weather[0].main, i => i));
 
-      console.log(displayableDay);
+      // console.log(displayableDay);
     }
     
     this.drawChartAndActivate(this.dailyData[0]);

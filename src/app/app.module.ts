@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavigationVisibilityService } from './services/navigation-visibility/navigation-visibility.service';
@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardWeatherListItemComponent } from './components/dashboard-weather-list-item/dashboard-weather-list-item.component';
+import { HttpCachingInterceptor } from './interceptors/http-caching-interceptor/http-caching.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DashboardWeatherListItemComponent } from './components/dashboard-weathe
     NavigationVisibilityService,
     OpenWeatherMapApiService,
     OpenWeatherMapApiOptionsService,
-    GeoLocationService
+    GeoLocationService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpCachingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
