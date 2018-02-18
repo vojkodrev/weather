@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
     }
 
     this.images = {
-      "Clouds": sanitizer.bypassSecurityTrustStyle("url('http://oliverperkins.com/wp-content/uploads/2017/05/Cumulonimbus_blir_f%C3%B8dt.jpg')"),
+      "Clouds": sanitizer.bypassSecurityTrustStyle("url('http://www.weatherwizkids.com/wp-content/uploads/2015/02/fractus-clouds.jpg')"),
       "Sun": sanitizer.bypassSecurityTrustStyle("url('https://essexweather.org.uk/content/images/2018/02/local-2.jpg')"),
       "Rain": sanitizer.bypassSecurityTrustStyle("url('http://www.ehowzit.co.za/wp-content/uploads/2016/07/rainy-weather.jpg')"),
       "Snow": sanitizer.bypassSecurityTrustStyle("url('https://wagfarms.files.wordpress.com/2013/01/005.jpg')"),
