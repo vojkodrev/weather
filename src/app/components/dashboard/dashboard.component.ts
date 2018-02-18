@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
   temperature: number;
   weather: string;
   wind: number;
+  windDeg: number;
   barometer: number;
   visibility: number;
   humidity: number;
@@ -185,6 +186,7 @@ export class DashboardComponent implements OnInit {
     this.weather = weatherData.weather[0].main;
     // this.weather = "Clear";
     this.wind = weatherData.wind.speed;
+    this.windDeg = weatherData.wind.deg;
     this.barometer = weatherData.main.pressure;
     this.visibility = weatherData.visibility / 1000;
     this.humidity = weatherData.main.humidity;

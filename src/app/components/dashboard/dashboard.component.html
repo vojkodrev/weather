@@ -29,7 +29,7 @@
           {{weather}}
         </div>
         <ul>
-          <li><span>Wind</span> {{wind}} km/h</li>
+          <li><span>Wind</span> <span class="oi oi-location wind-direction" [style.transform]="'rotate(' + (windDeg - 45) + 'deg)'"></span> {{wind}} km/h</li>
           <li><span>Barometer</span> {{barometer}} mb</li>
           <li><span>Visibility</span> {{visibility}} km</li>
           <li><span>Humidity</span> {{humidity}}%</li>

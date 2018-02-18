@@ -17,6 +17,7 @@ export interface ICurrentWeatherInfoWeather {
 
 export interface ICurrentWeatherInfoWind {
   speed: number;
+  deg:number;
 }
 
 export interface ICurrentWeatherInfoSys {
