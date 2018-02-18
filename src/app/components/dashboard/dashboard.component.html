@@ -1,4 +1,4 @@
-<div class="weather">
+<div class="weather" [style.background-image]="images[weather]">
   <div>
     <div class="location">
       <div class="field">
@@ -40,8 +40,8 @@
     </div>
 
     <div class="days">
-      <span class="button left" href><span class="oi oi-chevron-left"></span></span>
-      <span class="button right" href><span class="oi oi-chevron-right"></span></span>
+      <!-- <span class="button left" href><span class="oi oi-chevron-left"></span></span>
+      <span class="button right" href><span class="oi oi-chevron-right"></span></span> -->
       <ul>
         <app-dashboard-weather-list-item 
           *ngFor="let daily of dailyData" 

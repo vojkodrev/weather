@@ -9,6 +9,7 @@ import { OpenWeatherMapApiService, ICurrentWeatherInfo, IForecastInfo, IForecast
 import * as moment from 'moment';
 
 import { List } from 'linqts';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 export class DisplayableDailyWeatherInfo {
   dayOfWeek: string;
@@ -39,18 +40,29 @@ export class DashboardComponent implements OnInit {
   sunrise: string;
   sunset: string;
   dailyData: DisplayableDailyWeatherInfo[] = new Array();
+  images: {[weather: string]: SafeUrl};
+  
 
   constructor(
     private navigationVisibilityService: NavigationVisibilityService,
     private openWeatherMapApiOptionsService: OpenWeatherMapApiOptionsService,
     private router: Router,
     private geoLocationService: GeoLocationService,
-    private openWeatherMapApiService: OpenWeatherMapApiService) {
+    private openWeatherMapApiService: OpenWeatherMapApiService,
+    private sanitizer: DomSanitizer) {
       
     if (!openWeatherMapApiOptionsService.key) {
       router.navigateByUrl("login");
       return;
     }
+
+    this.images = {
+      "Clouds": sanitizer.bypassSecurityTrustStyle("url('http://oliverperkins.com/wp-content/uploads/2017/05/Cumulonimbus_blir_f%C3%B8dt.jpg')"),
+      "Sun": sanitizer.bypassSecurityTrustStyle("url('https://essexweather.org.uk/content/images/2018/02/local-2.jpg')"),
+      "Rain": sanitizer.bypassSecurityTrustStyle("url('http://www.ehowzit.co.za/wp-content/uploads/2016/07/rainy-weather.jpg')"),
+      "Snow": sanitizer.bypassSecurityTrustStyle("url('https://wagfarms.files.wordpress.com/2013/01/005.jpg')"),
+      "Clear": sanitizer.bypassSecurityTrustStyle("url('https://yim108.files.wordpress.com/2012/02/img_8715.jpg')"),
+    };
 
     navigationVisibilityService.visible = true;
     
@@ -168,6 +180,7 @@ export class DashboardComponent implements OnInit {
     this.temperature = Math.round(weatherData.main.temp);
     this.location = weatherData.name;
     this.weather = weatherData.weather[0].main;
+    // this.weather = "Clear";
     this.wind = weatherData.wind.speed;
     this.barometer = weatherData.main.pressure;
     this.visibility = weatherData.visibility / 1000;
