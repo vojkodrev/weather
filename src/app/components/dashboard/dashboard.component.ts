@@ -279,12 +279,6 @@ export class DashboardComponent implements OnInit {
     this.getWeatherForLocation();
   }
 
-  onLocationKeyUp(event: KeyboardEvent) {
-    if (event.code == "Enter") {
-      this.getWeatherForLocation();
-    }
-  }
-
   setCurrentWeatherData(weatherData: ICurrentWeatherInfo) {
     this.temperature = Math.round(weatherData.main.temp);
     this.location = weatherData.name;

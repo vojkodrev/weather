@@ -1,0 +1,68 @@
+.field {
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.25);
+  display: block;
+  float: left;
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+  line-height: 22.005px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  position: relative;
+  width: 300px;
+  >input[type="text"] {
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border-style: none;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 22.005px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 0px;
+    padding-top: 0px;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 255px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: rgba($color: white, $alpha: 0.5)
+    }
+    &.error {
+      color: red;
+    }
+  }
+  .oi {
+    cursor: pointer;
+    padding: 13px;
+    display: inline-block;
+    font-size: 15px;
+    height: 40px;
+    width: 40px;
+    &:hover {
+      color: rgba($color: white, $alpha: 0.5)
+    }
+    &:active {
+      color: rgba($color: white, $alpha: 0.25)
+    }
+  }
+}

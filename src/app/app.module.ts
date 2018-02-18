@@ -16,6 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardWeatherListItemComponent } from './components/dashboard-weather-list-item/dashboard-weather-list-item.component';
 import { HttpCachingInterceptor } from './interceptors/http-caching-interceptor/http-caching.interceptor';
 import { DashboardContentHolderComponent } from './components/dashboard-content-holder/dashboard-content-holder.component';
+import { DashboardFieldComponent } from './components/dashboard-field/dashboard-field.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DashboardContentHolderComponent } from './components/dashboard-content-
     UserInfoComponent,
     DashboardComponent,
     DashboardWeatherListItemComponent,
-    DashboardContentHolderComponent
+    DashboardContentHolderComponent,
+    DashboardFieldComponent
   ],
   imports: [
     BrowserModule,

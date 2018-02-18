@@ -1,9 +1,12 @@
 <app-dashboard-content-holder [backgroundImage]="images[weather] ? images[weather] : images['Default']">
   <div class="location">
-    <div class="field">
-      <input type="text" (keyup)="onLocationKeyUp($event)" class="{{getWeatherDataError ? 'error' : ''}}" placeholder="Location" [(ngModel)]="location">
-      <span class="oi oi-chevron-right" (click)="getWeatherForLocation()"></span>
-    </div>
+    <app-dashboard-field 
+      [(text)]="location" 
+      oiClass="oi-chevron-right" 
+      [hasErrors]="getWeatherDataError"
+      fieldPlaceholder="Location"
+      (enterPress)="getWeatherForLocation()"
+      (buttonClick)="getWeatherForLocation()"></app-dashboard-field>
 
     <div class="current-location {{currentLocationError ? 'error' : ''}}" (click)="getWeatherForCurrentLocation()">
       <span class="oi oi-location"></span>
