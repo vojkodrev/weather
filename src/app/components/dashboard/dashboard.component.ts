@@ -23,6 +23,8 @@ export class DisplayableDailyWeatherInfo {
   lowTemp: number;
   image: string;
   active: boolean;
+  chartValues: number[] = new Array();
+  chartLabels: string[] = new Array();
 }
 
 @Component({
@@ -83,15 +85,14 @@ export class DashboardComponent implements OnInit {
     console.log(this.chart);
 
     let ctx = (<HTMLCanvasElement> this.chart.nativeElement).getContext("2d");
-    let a = new Chart(ctx, {
+    new Chart(ctx, {
       type: "line",
       data: {
         labels: ["2", "3", "4", "5"],
         datasets: [{
-          label: "Dataset1",
           borderColor:"white",
           pointBackgroundColor: "white",
-          backgroundColor: "rgba(100,116,137, 0.5)",
+          backgroundColor: "rgba(100, 116, 137, 0.5)",
           fill: true,
           borderWidth: 1,
           data:[4, 2, 3, 1],
@@ -198,24 +199,37 @@ export class DashboardComponent implements OnInit {
 
   setDailyData(dailyDataResponse: IForecastInfo) {
     this.dailyData = new Array();
-    let groupsByDay = new List(dailyDataResponse.list).GroupBy(i => moment(i.dt * 1000).format("YYYYMMDD"), i => i);
+    
+    let groupsByDay: {[key: string]: [IForecastInfo3h]} = new List(dailyDataResponse.list).GroupBy(i => moment(i.dt * 1000).format("YYYYMMDD"), i => i);
+    console.log("groups", groupsByDay);
     for (let key in groupsByDay) {
+      
       let displayableDay = new DisplayableDailyWeatherInfo();
       this.dailyData.push(displayableDay);
 
-      let day = new List<IForecastInfo3h>(groupsByDay[key]);
-      let m = moment(key, "YYYYMMDD");
+      let day = groupsByDay[key];
+      console.log(day);
 
-      displayableDay.lowTemp = Math.round(day.Select(i => i.main.temp_min).Min());
-      displayableDay.highTemp = Math.round(day.Select(i => i.main.temp_max).Max());
-      displayableDay.dayOfWeek = m.format("ddd");
-      displayableDay.dayOfMonth = parseInt(m.format("D"));
-      displayableDay.humidity = Math.round(day.Select(i => i.main.humidity).Max());
-      displayableDay.image = this.getKeyWithMaxElements(day.GroupBy(i => i.weather[0].main, i => i));
+      for (let item of day) {
+        console.log(item);
+        displayableDay.chartLabels.push(moment(item.dt * 1000).format("ha"));
+        displayableDay.chartValues.push(item.main.temp);
+      }
+
+      let dayList = new List<IForecastInfo3h>(groupsByDay[key]);
+      let date = moment(key, "YYYYMMDD");
+
+      displayableDay.lowTemp = Math.round(dayList.Select(i => i.main.temp_min).Min());
+      displayableDay.highTemp = Math.round(dayList.Select(i => i.main.temp_max).Max());
+      displayableDay.dayOfWeek = date.format("ddd");
+      displayableDay.dayOfMonth = parseInt(date.format("D"));
+      displayableDay.humidity = Math.round(dayList.Select(i => i.main.humidity).Max());
+      displayableDay.image = this.getKeyWithMaxElements(dayList.GroupBy(i => i.weather[0].main, i => i));
+
+      console.log(displayableDay);
     }
+    
     this.dailyData[0].active = true;
-
-
   }
 
   getKeyWithMaxElements(dict: {[key: string]: any[]}): string {

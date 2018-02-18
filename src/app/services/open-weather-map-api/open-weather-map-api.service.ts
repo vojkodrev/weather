@@ -35,6 +35,7 @@ export interface ICurrentWeatherInfo {
 }
 
 export interface IForecastInfoMain {
+  temp: number;
   temp_min: number;
   temp_max: number;
   humidity: number;
