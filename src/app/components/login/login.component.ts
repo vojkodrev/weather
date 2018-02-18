@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 
 import { NavigationBarOptionsService } from '../../services/navigation-bar-options/navigation-bar-options.service';
 import { OpenWeatherMapApiService, ICurrentWeatherInfo } from '../../services/open-weather-map-api/open-weather-map-api.service';
-import { OpenWeatherMapApiOptionsService } from "../../services/open-weather-map-api-options/open-weather-map-api-options.service";
 
 @Component({
   selector: 'app-login',
@@ -15,11 +14,11 @@ export class LoginComponent implements OnInit {
   username: string;
   key: string;
   hasErrors: boolean;
+  loginError: string;
 
   constructor(
     private navigationBarOptionsService: NavigationBarOptionsService,
     private openWeatherMapApiService: OpenWeatherMapApiService,
-    private openWeatherMapApiOptionsService: OpenWeatherMapApiOptionsService,
     private router: Router) {
 
     navigationBarOptionsService.visible = false;
@@ -30,11 +29,22 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.username) {
+      this.loginError = "Username is not set!";
+      this.hasErrors = true;
+      return;
+    }
+
     this.hasErrors = false;
-    this.openWeatherMapApiOptionsService.key = this.key;
+    localStorage.openWeatherMapApiKey = this.key;
+    localStorage.openWeatherMapUnits = "metric";
+    localStorage.username = this.username;
     
     this.openWeatherMapApiService.getCurrentWeatherByCityName("Bangkok").subscribe(
       data => this.router.navigateByUrl("dashboard"),
-      error => this.hasErrors = true);
+      error => {
+        this.loginError = "Login error!";
+        this.hasErrors = true
+      });
   }
 }

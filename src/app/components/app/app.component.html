@@ -5,7 +5,7 @@
     <ul>
       <li class="{{navigationBarOptionsService.selected == 'dashboard' ? 'selected' : ''}}"><a routerLink="dashboard">Dashboard</a></li>
       <li class="{{navigationBarOptionsService.selected == 'userInfo' ? 'selected' : ''}}"><a routerLink="userInfo">User</a></li>
-      <li (click)="logout()">Logout</li>
+      <li (click)="logout()">Logout ({{localStorage.username}})</li>
     </ul>
   </div>
 </span>

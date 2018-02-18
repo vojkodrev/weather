@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { NavigationBarOptionsService } from '../../services/navigation-bar-options/navigation-bar-options.service';
-import { OpenWeatherMapApiOptionsService } from "../../services/open-weather-map-api-options/open-weather-map-api-options.service";
 import { GeoLocationService } from "../../services/geo-location/geo-location.service";
 import { OpenWeatherMapApiService, ICurrentWeatherInfo, IForecastInfo, IForecastInfo3h } from "../../services/open-weather-map-api/open-weather-map-api.service";
 
@@ -47,12 +46,12 @@ export class DashboardComponent implements OnInit {
   sunset: string;
   dailyData: DisplayableDailyWeatherInfo[] = new Array();
   images: {[weather: string]: SafeStyle};
+  localStorage = localStorage;
 
   @ViewChild("chart") chart: ElementRef;
 
   constructor(
     private navigationBarOptionsService: NavigationBarOptionsService,
-    private openWeatherMapApiOptionsService: OpenWeatherMapApiOptionsService,
     private geoLocationService: GeoLocationService,
     private openWeatherMapApiService: OpenWeatherMapApiService,
     private sanitizer: DomSanitizer) {
@@ -271,10 +270,10 @@ export class DashboardComponent implements OnInit {
   }
 
   switchUnits() {
-    if (this.openWeatherMapApiOptionsService.units == "metric") {
-      this.openWeatherMapApiOptionsService.units = "imperial";
+    if (localStorage.openWeatherMapUnits == "imperial") {
+      localStorage.openWeatherMapUnits = "metric";
     } else {
-      this.openWeatherMapApiOptionsService.units = "metric";
+      localStorage.openWeatherMapUnits = "imperial";
     }
 
     this.getWeatherForLocation();

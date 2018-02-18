@@ -18,9 +18,9 @@
           {{temperature}}
         </div>
         <div class="unit">
-          °{{openWeatherMapApiOptionsService.units == 'metric' ? 'C' : 'F'}}
+          °{{localStorage.openWeatherMapUnits == 'metric' ? 'C' : 'F'}}
           <div class="alternative" (click)="switchUnits()">
-            °{{openWeatherMapApiOptionsService.units == 'metric' ? 'F' : 'C'}}
+            °{{localStorage.openWeatherMapUnits == 'metric' ? 'F' : 'C'}}
           </div>
         </div>
       </div>

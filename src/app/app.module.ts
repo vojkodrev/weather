@@ -6,7 +6,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavigationBarOptionsService } from './services/navigation-bar-options/navigation-bar-options.service';
 import { OpenWeatherMapApiService } from './services/open-weather-map-api/open-weather-map-api.service';
-import { OpenWeatherMapApiOptionsService } from './services/open-weather-map-api-options/open-weather-map-api-options.service';
 import { GeoLocationService } from './services/geo-location/geo-location.service';
 
 import { AppComponent } from './components/app/app.component';
@@ -35,7 +34,6 @@ import { HttpCachingInterceptor } from './interceptors/http-caching-interceptor/
   providers: [
     NavigationBarOptionsService,
     OpenWeatherMapApiService,
-    OpenWeatherMapApiOptionsService,
     GeoLocationService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpCachingInterceptor, multi: true }
   ],

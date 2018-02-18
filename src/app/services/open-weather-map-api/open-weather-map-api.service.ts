@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { OpenWeatherMapApiOptionsService } from "../open-weather-map-api-options/open-weather-map-api-options.service";
-
 export interface IWeatherInfoMain {
   humidity: number;
   pressure: number;
@@ -59,15 +57,14 @@ export interface IForecastInfo {
 export class OpenWeatherMapApiService {
 
   constructor(
-    private http: HttpClient,
-    private weatherApiOptions: OpenWeatherMapApiOptionsService) { }
+    private http: HttpClient) { }
 
   getCurrentWeatherByCityName(name: string) {
     return this.http.get<ICurrentWeatherInfo>("https://api.openweathermap.org/data/2.5/weather", {
       params: {
         "q": name,
-        "appid": this.weatherApiOptions.key,
-        "units": this.weatherApiOptions.units
+        "appid": localStorage.openWeatherMapApiKey,
+        "units": localStorage.openWeatherMapUnits
       }
     })
   }
@@ -77,8 +74,8 @@ export class OpenWeatherMapApiService {
       params: {
         "lat": lat.toString(),
         "lon": lon.toString(),
-        "appid": this.weatherApiOptions.key,
-        "units": this.weatherApiOptions.units
+        "appid": localStorage.openWeatherMapApiKey,
+        "units": localStorage.openWeatherMapUnits
       }
     })
   }
@@ -87,8 +84,8 @@ export class OpenWeatherMapApiService {
     return this.http.get<IForecastInfo>("https://api.openweathermap.org/data/2.5/forecast", {
       params: {
         "q": name,
-        "appid": this.weatherApiOptions.key,
-        "units": this.weatherApiOptions.units
+        "appid": localStorage.openWeatherMapApiKey,
+        "units": localStorage.openWeatherMapUnits
       }
     })
   }
@@ -98,8 +95,8 @@ export class OpenWeatherMapApiService {
       params: {
         "lat": lat.toString(),
         "lon": lon.toString(),
-        "appid": this.weatherApiOptions.key,
-        "units": this.weatherApiOptions.units
+        "appid": localStorage.openWeatherMapApiKey,
+        "units": localStorage.openWeatherMapUnits
       }
     })
   }
