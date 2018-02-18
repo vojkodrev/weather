@@ -62,6 +62,8 @@ export class DashboardComponent implements OnInit {
       "Rain": sanitizer.bypassSecurityTrustStyle("url('http://www.ehowzit.co.za/wp-content/uploads/2016/07/rainy-weather.jpg')"),
       "Snow": sanitizer.bypassSecurityTrustStyle("url('https://wagfarms.files.wordpress.com/2013/01/005.jpg')"),
       "Clear": sanitizer.bypassSecurityTrustStyle("url('https://yim108.files.wordpress.com/2012/02/img_8715.jpg')"),
+      "Mist": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
+      "Fog": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
     };
 
     navigationVisibilityService.visible = true;
@@ -179,6 +181,7 @@ export class DashboardComponent implements OnInit {
   setCurrentWeatherData(weatherData: ICurrentWeatherInfo) {
     this.temperature = Math.round(weatherData.main.temp);
     this.location = weatherData.name;
+    console.log(weatherData.weather);
     this.weather = weatherData.weather[0].main;
     // this.weather = "Clear";
     this.wind = weatherData.wind.speed;

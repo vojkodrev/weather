@@ -95,6 +95,9 @@
       white-space: nowrap;
       width: 151px;
     }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
     .title {
       box-sizing: border-box;
       cursor: default;
