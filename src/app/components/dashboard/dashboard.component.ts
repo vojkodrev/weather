@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {Router} from '@angular/router';
 
 import { NavigationVisibilityService } from '../../services/navigation-visibility/navigation-visibility.service';
@@ -7,6 +7,10 @@ import { GeoLocationService } from "../../services/geo-location/geo-location.ser
 import { OpenWeatherMapApiService, ICurrentWeatherInfo, IForecastInfo, IForecastInfo3h } from "../../services/open-weather-map-api/open-weather-map-api.service";
 
 import * as moment from 'moment';
+
+import {Chart, ChartPoint} from "chart.js";
+
+import "chartjs-plugin-datalabels";
 
 import { List } from 'linqts';
 import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
@@ -42,7 +46,8 @@ export class DashboardComponent implements OnInit {
   sunset: string;
   dailyData: DisplayableDailyWeatherInfo[] = new Array();
   images: {[weather: string]: SafeStyle};
-  
+
+  @ViewChild("chart") chart: ElementRef;
 
   constructor(
     private navigationVisibilityService: NavigationVisibilityService,
@@ -51,14 +56,14 @@ export class DashboardComponent implements OnInit {
     private geoLocationService: GeoLocationService,
     private openWeatherMapApiService: OpenWeatherMapApiService,
     private sanitizer: DomSanitizer) {
-      
+
     if (!openWeatherMapApiOptionsService.key) {
       router.navigateByUrl("login");
       return;
     }
 
     this.images = {
-      "Clouds": sanitizer.bypassSecurityTrustStyle("url('http://www.weatherwizkids.com/wp-content/uploads/2015/02/fractus-clouds.jpg')"),
+      "Clouds": sanitizer.bypassSecurityTrustStyle("url('https://www.walldevil.com/wallpapers/a50/sky-wallpapers-sunny-pixel-paper-clouds-weather-wallpaper-large-rainbow.jpg')"),
       "Sun": sanitizer.bypassSecurityTrustStyle("url('https://essexweather.org.uk/content/images/2018/02/local-2.jpg')"),
       "Rain": sanitizer.bypassSecurityTrustStyle("url('http://www.ehowzit.co.za/wp-content/uploads/2016/07/rainy-weather.jpg')"),
       "Snow": sanitizer.bypassSecurityTrustStyle("url('https://wagfarms.files.wordpress.com/2013/01/005.jpg')"),
@@ -69,11 +74,97 @@ export class DashboardComponent implements OnInit {
     };
 
     navigationVisibilityService.visible = true;
-    
+
     this.getWeatherForCurrentLocation();
   }
 
   ngOnInit() {
+
+    console.log(this.chart);
+
+    let ctx = (<HTMLCanvasElement> this.chart.nativeElement).getContext("2d");
+    let a = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["2", "3", "4", "5"],
+        datasets: [{
+          label: "Dataset1",
+          borderColor:"white",
+          pointBackgroundColor: "white",
+          backgroundColor: "rgba(100,116,137, 0.5)",
+          fill: true,
+          borderWidth: 1,
+          data:[4, 2, 3, 1],
+        }]
+      },
+      options: {
+        animation: {
+          duration: 0,
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: false
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 2
+          },
+          line: {
+            tension: 0
+          }
+        },
+        layout: {
+          padding: {
+            top: 20,
+            bottom: 10,
+            left: 10,
+            right: 20
+          },
+        },
+        scales: {
+          xAxes: [{
+            ticks: {
+              fontColor: "rgba(255, 255, 255, 0.6)",
+              fontFamily: "Segoe UI",
+              fontSize: 15,
+            },
+            gridLines : {
+              display : false,
+              color: "white",
+              lineWidth: 1
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              fontColor: "rgba(255, 255, 255, 0.6)",
+              fontFamily: "Segoe UI",
+              fontSize: 0,
+              min: 0,
+              max: 5,
+            },
+            gridLines : {
+              display : false,
+              color: "rgba(0,0,0,0)",
+              lineWidth: 0
+            }
+          }]
+        },
+        plugins: {
+					datalabels: {
+						backgroundColor: "rgba(0,0,0,0)",
+						color: 'rgba(255, 255, 255, 0.6)',
+						font: {
+              size: "20"
+            },
+            align:"end",
+					}
+				},
+      }
+    });
   }
 
   formatTime(seconds: number) {
@@ -123,6 +214,8 @@ export class DashboardComponent implements OnInit {
       displayableDay.image = this.getKeyWithMaxElements(day.GroupBy(i => i.weather[0].main, i => i));
     }
     this.dailyData[0].active = true;
+
+
   }
 
   getKeyWithMaxElements(dict: {[key: string]: any[]}): string {
