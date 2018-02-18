@@ -1,69 +1,67 @@
-<div class="weather" [style.background-image]="images[weather] ? images[weather] : images['Default']">
-  <div>
-    <div class="location">
-      <div class="field">
-        <input type="text" (keyup)="onLocationKeyUp($event)" class="{{getWeatherDataError ? 'error' : ''}}" placeholder="Location" [(ngModel)]="location">
-        <span class="oi oi-chevron-right" (click)="getWeatherForLocation()"></span>
-      </div>
-
-      <div class="current-location {{currentLocationError ? 'error' : ''}}" (click)="getWeatherForCurrentLocation()">
-        <span class="oi oi-location"></span>
-      </div>
-
+<app-dashboard-content-holder [backgroundImage]="images[weather] ? images[weather] : images['Default']">
+  <div class="location">
+    <div class="field">
+      <input type="text" (keyup)="onLocationKeyUp($event)" class="{{getWeatherDataError ? 'error' : ''}}" placeholder="Location" [(ngModel)]="location">
+      <span class="oi oi-chevron-right" (click)="getWeatherForLocation()"></span>
     </div>
 
-    <div class="top-info">
-      <div class="temperature">
-        <div class="number">
-          {{temperature}}
-        </div>
-        <div class="unit">
-          °{{localStorage.openWeatherMapUnits == 'metric' ? 'C' : 'F'}}
-          <div class="alternative" (click)="switchUnits()">
-            °{{localStorage.openWeatherMapUnits == 'metric' ? 'F' : 'C'}}
-          </div>
-        </div>
-      </div>
-      <div class="details">
-        <div class="title">
-          {{weather}}
-        </div>
-        <ul>
-          <li>
-            <span>Wind</span> 
-            <span class="oi oi-location wind-direction" [style.transform]="'rotate(' + (windDeg - 45) + 'deg)'"></span>
-            {{wind}} km/h
-          </li>
-          <li><span>Barometer</span> {{barometer}} mb</li>
-          <li><span>Visibility</span> {{visibility}} km</li>
-          <li><span>Humidity</span> {{humidity}}%</li>
-          <li><span>Sunrise</span> {{sunrise}}</li>
-          <li><span>Sunset</span> {{sunset}}</li>
-        </ul>
-      </div>
+    <div class="current-location {{currentLocationError ? 'error' : ''}}" (click)="getWeatherForCurrentLocation()">
+      <span class="oi oi-location"></span>
     </div>
 
-    <div class="days">
-      <!-- <span class="button left" href><span class="oi oi-chevron-left"></span></span>
-      <span class="button right" href><span class="oi oi-chevron-right"></span></span> -->
+  </div>
+
+  <div class="top-info">
+    <div class="temperature">
+      <div class="number">
+        {{temperature}}
+      </div>
+      <div class="unit">
+        °{{localStorage.openWeatherMapUnits == 'metric' ? 'C' : 'F'}}
+        <div class="alternative" (click)="switchUnits()">
+          °{{localStorage.openWeatherMapUnits == 'metric' ? 'F' : 'C'}}
+        </div>
+      </div>
+    </div>
+    <div class="details">
+      <div class="title">
+        {{weather}}
+      </div>
       <ul>
-        <app-dashboard-weather-list-item 
-          *ngFor="let daily of dailyData" 
-          active="{{daily.active}}"
-          day="{{daily.dayOfWeek}}" 
-          dayOfMonth="{{daily.dayOfMonth}}" 
-          image="{{daily.image}}" 
-          percipitation="{{daily.humidity}}" 
-          high="{{daily.highTemp}}" 
-          low="{{daily.lowTemp}}"
-          (click)="drawChartAndActivate(daily)"></app-dashboard-weather-list-item>
+        <li>
+          <span>Wind</span> 
+          <span class="oi oi-location wind-direction" [style.transform]="'rotate(' + (windDeg - 45) + 'deg)'"></span>
+          {{wind}} km/h
+        </li>
+        <li><span>Barometer</span> {{barometer}} mb</li>
+        <li><span>Visibility</span> {{visibility}} km</li>
+        <li><span>Humidity</span> {{humidity}}%</li>
+        <li><span>Sunrise</span> {{sunrise}}</li>
+        <li><span>Sunset</span> {{sunset}}</li>
       </ul>
     </div>
-
-    <div class="chart">
-      <canvas #chart>
-        
-      </canvas>
-    </div>
   </div>
-</div>
+
+  <div class="days">
+    <!-- <span class="button left" href><span class="oi oi-chevron-left"></span></span>
+    <span class="button right" href><span class="oi oi-chevron-right"></span></span> -->
+    <ul>
+      <app-dashboard-weather-list-item 
+        *ngFor="let daily of dailyData" 
+        active="{{daily.active}}"
+        day="{{daily.dayOfWeek}}" 
+        dayOfMonth="{{daily.dayOfMonth}}" 
+        image="{{daily.image}}" 
+        percipitation="{{daily.humidity}}" 
+        high="{{daily.highTemp}}" 
+        low="{{daily.lowTemp}}"
+        (click)="drawChartAndActivate(daily)"></app-dashboard-weather-list-item>
+    </ul>
+  </div>
+
+  <div class="chart">
+    <canvas #chart>
+      
+    </canvas>
+  </div>
+</app-dashboard-content-holder>

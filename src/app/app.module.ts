@@ -15,6 +15,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardWeatherListItemComponent } from './components/dashboard-weather-list-item/dashboard-weather-list-item.component';
 import { HttpCachingInterceptor } from './interceptors/http-caching-interceptor/http-caching.interceptor';
+import { DashboardContentHolderComponent } from './components/dashboard-content-holder/dashboard-content-holder.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpCachingInterceptor } from './interceptors/http-caching-interceptor/
     LoginComponent,
     UserInfoComponent,
     DashboardComponent,
-    DashboardWeatherListItemComponent
+    DashboardWeatherListItemComponent,
+    DashboardContentHolderComponent
   ],
   imports: [
     BrowserModule,
