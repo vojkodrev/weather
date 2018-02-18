@@ -9,7 +9,7 @@ import { OpenWeatherMapApiService, ICurrentWeatherInfo, IForecastInfo, IForecast
 import * as moment from 'moment';
 
 import { List } from 'linqts';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 
 export class DisplayableDailyWeatherInfo {
   dayOfWeek: string;
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   sunrise: string;
   sunset: string;
   dailyData: DisplayableDailyWeatherInfo[] = new Array();
-  images: {[weather: string]: SafeUrl};
+  images: {[weather: string]: SafeStyle};
   
 
   constructor(

@@ -1,10 +1,12 @@
 .weather {
-  // background-image: url("http://www.flitemedia.com/wp-content/uploads/2015/06/NLC-Panorama-3rd-July-2014-3-49am.jpg");
   background-size: cover;
   background-position: center;
   background-color: rgb(1, 87, 155);
   box-sizing: border-box;
-  color: rgb(51, 51, 51);
+  color: white;
+  input[type="text"] {
+    color: white;
+  }
   display: block;
   font-size: 15px;
   font-weight: 400;
@@ -21,7 +23,6 @@
   padding-top: 16px;
   >div {
     box-sizing: border-box;
-    color: rgb(51, 51, 51);
     display: block;
     font-size: 15px;
     font-weight: 400;
@@ -38,7 +39,6 @@
     position: relative;
     .location {
       box-sizing: border-box;
-      color: rgb(51, 51, 51);
       display: block;
       font-size: 15px;
       font-weight: 400;
@@ -76,7 +76,6 @@
         >input[type="text"] {
           box-sizing: border-box;
           background-color: rgba(0, 0, 0, 0);
-          color: rgb(255, 255, 255);
           border-style: none;
           display: inline-block;
           font-size: 15px;
@@ -111,7 +110,6 @@
           cursor: pointer;
           padding:13px;
           display: inline-block;
-          color: white;
           font-size: 15px;
           height: 40px;
           width: 40px;
@@ -124,7 +122,6 @@
         }
       }
       >.current-location {
-        color: white;
         box-sizing: border-box;
         position: relative;
         cursor: pointer;
@@ -162,7 +159,6 @@
     .top-info {
       box-sizing: border-box;
       clear: left;
-      color: rgb(255, 255, 255);
       display: block;
       font-size: 15px;
       font-weight: 400;
@@ -180,7 +176,6 @@
       white-space: nowrap;
       .temperature {
         box-sizing: border-box;
-        color: rgb(255, 255, 255);
         display: inline-block;
         font-size: 15px;
         font-weight: 400;
@@ -198,7 +193,6 @@
         width: auto;
         .number {
           box-sizing: border-box;
-          color: rgb(255, 255, 255);
           direction: ltr;
           display: inline-block;
           font-size: 160px;
@@ -218,7 +212,6 @@
         }
         .unit {
           box-sizing: border-box;
-          color: rgb(255, 255, 255);
           display: inline-block;
           font-size: 60px;
           font-weight: 400;
@@ -240,7 +233,6 @@
             border-top-style: solid;
             border-top-width: 1px;
             box-sizing: border-box;
-            color: rgb(255, 255, 255);
             cursor: pointer;
             display: block;
             font-size: 15px;
@@ -270,7 +262,6 @@
       }
       .details {
         box-sizing: border-box;
-        color: rgb(255, 255, 255);
         display: inline-block;
         font-size: 15px;
         font-weight: 400;
@@ -289,7 +280,6 @@
         width: 470px;
         .title {
           box-sizing: border-box;
-          color: rgb(255, 255, 255);
           display: block;
           font-size: 36px;
           font-weight: 400;
@@ -308,7 +298,6 @@
         }
         >ul {
           box-sizing: border-box;
-          color: rgb(255, 255, 255);
           display: block;
           font-size: 13px;
           font-weight: 400;
@@ -334,7 +323,6 @@
           -webkit-padding-start: 0px;
           >li {
             box-sizing: border-box;
-            color: rgb(255, 255, 255);
             display: inline-block;
             font-size: 13px;
             font-weight: 400;
@@ -359,7 +347,6 @@
             width: 150.4px;
             >span {
               box-sizing: border-box;
-              color: rgb(255, 255, 255);
               display: inline;
               font-size: 13px;
               font-weight: 400;
@@ -388,7 +375,6 @@
     .days {
       box-sizing: border-box;
       clear: left;
-      color: rgb(255, 255, 255);
       display: block;
       font-size: 15px;
       font-weight: 400;
@@ -407,7 +393,6 @@
       width: 906px;
       >.button {
         box-sizing: border-box;
-        color: rgb(255, 255, 255);
         cursor: pointer;
         display: block;
         font-size: 15px;
@@ -447,7 +432,6 @@
           background-position-y: 0%;
           background-size: auto;
           box-sizing: border-box;
-          color: rgb(255, 255, 255);
           cursor: pointer;
           display: block;
           font-weight: 400;
@@ -478,7 +462,6 @@
           background-position-y: 0%;
           background-size: auto;
           box-sizing: border-box;
-          color: rgb(255, 255, 255);
           cursor: pointer;
           display: block;
           font-weight: 400;
@@ -502,7 +485,6 @@
       }
       >ul {
         box-sizing: border-box;
-        color: rgb(255, 255, 255);
         display: block;
         font-size: 0px;
         font-weight: 400;
