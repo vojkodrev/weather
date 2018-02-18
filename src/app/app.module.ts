@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { NavigationVisibilityService } from './services/navigation-visibility/navigation-visibility.service';
+import { NavigationBarOptionsService } from './services/navigation-bar-options/navigation-bar-options.service';
 import { OpenWeatherMapApiService } from './services/open-weather-map-api/open-weather-map-api.service';
 import { OpenWeatherMapApiOptionsService } from './services/open-weather-map-api-options/open-weather-map-api-options.service';
 import { GeoLocationService } from './services/geo-location/geo-location.service';
@@ -33,7 +33,7 @@ import { HttpCachingInterceptor } from './interceptors/http-caching-interceptor/
     HttpClientModule,
   ],
   providers: [
-    NavigationVisibilityService,
+    NavigationBarOptionsService,
     OpenWeatherMapApiService,
     OpenWeatherMapApiOptionsService,
     GeoLocationService,

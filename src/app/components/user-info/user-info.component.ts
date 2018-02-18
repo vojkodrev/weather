@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavigationVisibilityService } from '../../services/navigation-visibility/navigation-visibility.service';
+import { NavigationBarOptionsService } from '../../services/navigation-bar-options/navigation-bar-options.service';
 
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
-  styleUrls: ['./user-info.component.css']
+  styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor(private navigationVisibilityService: NavigationVisibilityService) {
+  constructor(private navigationBarOptionsService: NavigationBarOptionsService) {
 
-    navigationVisibilityService.visible = true;
+    navigationBarOptionsService.visible = true;
+    navigationBarOptionsService.selected = "userInfo";
   }
 
   ngOnInit() {

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import {Router} from '@angular/router';
 
-import { NavigationVisibilityService } from '../../services/navigation-visibility/navigation-visibility.service';
+import { NavigationBarOptionsService } from '../../services/navigation-bar-options/navigation-bar-options.service';
 import { OpenWeatherMapApiOptionsService } from "../../services/open-weather-map-api-options/open-weather-map-api-options.service";
 import { GeoLocationService } from "../../services/geo-location/geo-location.service";
 import { OpenWeatherMapApiService, ICurrentWeatherInfo, IForecastInfo, IForecastInfo3h } from "../../services/open-weather-map-api/open-weather-map-api.service";
@@ -52,17 +51,11 @@ export class DashboardComponent implements OnInit {
   @ViewChild("chart") chart: ElementRef;
 
   constructor(
-    private navigationVisibilityService: NavigationVisibilityService,
+    private navigationBarOptionsService: NavigationBarOptionsService,
     private openWeatherMapApiOptionsService: OpenWeatherMapApiOptionsService,
-    private router: Router,
     private geoLocationService: GeoLocationService,
     private openWeatherMapApiService: OpenWeatherMapApiService,
     private sanitizer: DomSanitizer) {
-
-    if (!openWeatherMapApiOptionsService.key) {
-      router.navigateByUrl("login");
-      return;
-    }
 
     this.images = {
       "Clouds": sanitizer.bypassSecurityTrustStyle("url('https://www.walldevil.com/wallpapers/a50/sky-wallpapers-sunny-pixel-paper-clouds-weather-wallpaper-large-rainbow.jpg')"),
@@ -76,7 +69,8 @@ export class DashboardComponent implements OnInit {
       "Haze": sanitizer.bypassSecurityTrustStyle("url('https://www.thenational.ae/image/policy:1.704756:1518668101/weather.JPG?f=16x9&w=1200&$p$f$w=4343fc7')"),
     };
 
-    navigationVisibilityService.visible = true;
+    navigationBarOptionsService.visible = true;
+    navigationBarOptionsService.selected = "dashboard";
 
     this.getWeatherForCurrentLocation();
   }
