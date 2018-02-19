@@ -15,46 +15,52 @@ export class HttpCachingInterceptor implements HttpInterceptor {
     //   console.log("cache", httpCacheService);
     // }, 5000);
 
+    // localStorage.cacheInvalidationTime = 10000;
+
     if (!localStorage.cacheInvalidationTime)
       localStorage.cacheInvalidationTime = 600000;
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(1);
     let keys = new List(Object.keys(this.httpCacheService.cache));
     if (keys.Count() > 20) {
       keys.Take(keys.Count() - 20).ForEach(i => delete this.httpCacheService.cache[i]);
     }
 
-    console.log(2);
-
     if (req.method != "GET")
       return next.handle(req);
-
-    console.log(3);
 
     // console.log('intercepted request:', req);
 
     let cached = this.httpCacheService.cache[req.urlWithParams];
 
-    console.log(4);
+    if (cached) {
+      let currentTime = (new Date).getTime();
+      let cachedTime = cached.time;
+      let cacheInvalidationTime = parseInt(localStorage.cacheInvalidationTime);
 
-    let currentTime = (new Date).getTime();
-    let cachedTime = cached.time;
-    let cacheInvalidationTime = parseInt(localStorage.cacheInvalidationTime);
+      // console.log("cached", cached, "current time", currentTime, "cached time", cachedTime, "cache invalidation time", cacheInvalidationTime);
+      // console.log("diff", currentTime - cachedTime);
 
-    console.log("cached", cached, "current time", currentTime, "cached time", cachedTime, "cache invalidation time", cacheInvalidationTime);
-
-    if (cached && (currentTime - cachedTime) < cacheInvalidationTime) {
-      // console.log("returning response from cache");
-      return of(cached.response);
+      if ((currentTime - cachedTime) < cacheInvalidationTime) {
+        // console.log("cache");
+        return of(cached.response);
+      } else {
+        return this.justRequestIt(next, req);
+      }
     } else {
-      return next.handle(req).do(evt => {
-        if (evt instanceof HttpResponse) {
-          // console.log('intercepted response:', evt);
-          this.httpCacheService.cache[req.urlWithParams] = new HttpCacheItem((new Date).getTime(), evt);
-        }
-      });
+      return this.justRequestIt(next, req);
     }
+  }
+
+  justRequestIt(next: HttpHandler, req: HttpRequest<any>): Observable<HttpEvent<any>> {
+    // console.log("request");
+
+    return next.handle(req).do(evt => {
+      if (evt instanceof HttpResponse) {
+        // console.log('intercepted response:', evt);
+        this.httpCacheService.cache[req.urlWithParams] = new HttpCacheItem((new Date).getTime(), evt);
+      }
+    });    
   }
 }

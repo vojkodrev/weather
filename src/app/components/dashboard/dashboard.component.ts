@@ -194,16 +194,16 @@ export class DashboardComponent implements OnInit {
 
     this.geoLocationService.getLocation().subscribe(
       position => {
-        console.log(position);
+        // console.log(position);
 
         this.openWeatherMapApiService.getCurrentWeatherByCoordinates(position.coords.latitude, position.coords.longitude).subscribe(
           weatherData => {
-            console.log("current weather data", weatherData);
+            // console.log("current weather data", weatherData);
             this.setCurrentWeatherData(weatherData);
 
             this.openWeatherMapApiService.getDailyForecastByCoordinates(position.coords.latitude, position.coords.longitude).subscribe(
               dailyDataResponse => {
-                console.log("daily data", dailyDataResponse);
+                // console.log("daily data", dailyDataResponse);
 
                 this.setDailyData(dailyDataResponse);
               },
@@ -301,7 +301,7 @@ export class DashboardComponent implements OnInit {
   setCurrentWeatherData(weatherData: ICurrentWeatherInfo) {
     this.temperature = Math.round(weatherData.main.temp);
     this.location = weatherData.name;
-    console.log(weatherData.weather);
+    // console.log(weatherData.weather);
     this.weather = weatherData.weather[0].main;
     // this.weather = "Clear";
     this.wind = weatherData.wind.speed;

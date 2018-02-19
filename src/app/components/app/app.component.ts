@@ -21,7 +21,7 @@ export class AppComponent {
     router.events
       .filter((event) => event instanceof NavigationEnd)
       .subscribe((event) => {
-        console.log('NavigationEnd:', event);
+        // console.log('NavigationEnd:', event);
 
         if (!localStorage.openWeatherMapApiKey && router.url != "/login") {
           router.navigateByUrl("login");
