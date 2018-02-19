@@ -17,6 +17,7 @@
   padding-top: 0px;
   position: relative;
   width: 300px;
+  z-index: 200;
   >input[type="text"] {
     box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0);
