@@ -14,7 +14,7 @@ export class UserInfoComponent implements OnInit {
   cacheInvalidationTime: number;
   openWeatherMapApiKey: string;
   username: string;
-  numberOfAPICallsInLast10min: number;
+  numberOfApiCallsInLast10min: number;
 
   constructor(
     private navigationBarOptionsService: NavigationBarOptionsService,

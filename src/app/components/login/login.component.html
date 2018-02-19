@@ -4,7 +4,7 @@
   <h1>Login to Your Account</h1>
   <form (ngSubmit)="onSubmit()">
     <input type="text" [(ngModel)]="username" autofocus required name="username" placeholder="Username">
-    <input type="text" [(ngModel)]="key" name="key" required placeholder="OpenWeather API Key">
+    <input type="text" [(ngModel)]="key" name="key" required placeholder="OpenWeather Api Key">
     <input type="submit" value="Login" [ngbPopover]="popContent" container="body" placement="bottom" popoverTitle="Error" #submitPopover="ngbPopover" triggers="manual">
   </form>
 

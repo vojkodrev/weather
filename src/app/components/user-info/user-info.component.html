@@ -4,7 +4,7 @@
       <span>Username:</span>
     </div>
     <div class="col-3">
-      <span>Number of API calls in last 10min:</span>
+      <span>Number of Api calls in last 10min:</span>
     </div>
   </div>
   <div class="row">
@@ -12,24 +12,24 @@
       <app-dashboard-field fieldPlaceholder="Username" oiClass="oi-person" [(text)]="username">
       </app-dashboard-field>
     </div>
-    <div class="col-3">
-      <app-dashboard-field fieldPlaceholder="Number of API calls in last 10min" oiClass="oi-external-link" [(text)]="numberOfAPICallsInLast10min">
+    <div class="col-3"> 
+      <app-dashboard-field fieldPlaceholder="Number of Api calls in last 10min" [readonly]="true" oiClass="oi-external-link" [(text)]="numberOfApiCallsInLast10min">
       </app-dashboard-field>
     </div>
   </div>
 
   <div class="row">
     <div class="col-3">
-      <span>Open Weather Map API Key:</span>
+      <span>Open Weather Map Api Key:</span>
     </div>
   </div>
   <div class="row">
     <div class="col-3">
-      <app-dashboard-field fieldPlaceholder="Open Weather Map API Key" oiClass="oi-map" [(text)]="openWeatherMapApiKey">
+      <app-dashboard-field fieldPlaceholder="Open Weather Map Api Key" oiClass="oi-map" [(text)]="openWeatherMapApiKey">
       </app-dashboard-field>
     </div>
     <div class="col-3">
-      <button class="btn btn-danger" type="button">Clear API Cache</button>
+      <button class="btn btn-danger" type="button" (click)="clearApiCache();">Clear Api Cache</button>
     </div>
   </div>
 

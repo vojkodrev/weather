@@ -35,6 +35,8 @@ export class DashboardFieldComponent implements OnInit {
 
   @Input() fieldPlaceholder: string;
 
+  @Input() readonly: boolean;
+
   constructor() { }
 
   ngOnInit() {
