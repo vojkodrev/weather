@@ -1,0 +1,4 @@
+<div class="field">
+  <input type="text" (keyup)="fieldKeyUp($event)" [readonly]="readonly" class="{{hasErrors ? 'error' : ''}}" placeholder="{{fieldPlaceholder}}" [(ngModel)]="text">
+  <span class="oi {{oiClass}}" (click)="buttonClicked()"></span>
+</div>

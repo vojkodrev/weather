@@ -1,0 +1,17 @@
+<span *ngIf="navigationBarOptionsService.visible">
+
+  <div class="navigation">
+    <div><h1>Weather</h1></div>
+    <ul>
+      <li class="{{navigationBarOptionsService.selected == 'dashboard' ? 'selected' : ''}}"><a routerLink="dashboard">Dashboard</a></li>
+      <li class="{{navigationBarOptionsService.selected == 'userInfo' ? 'selected' : ''}}"><a routerLink="userInfo">User Information</a></li>
+      <li (click)="logout()">Logout ({{localStorage.username}})</li>
+    </ul>
+  </div>
+</span>
+
+<router-outlet></router-outlet>
+
+<div class="footer" *ngIf="navigationBarOptionsService.visible">
+  <div class="small">2018 - Vojko Drev</div>
+</div>

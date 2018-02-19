@@ -1,0 +1,64 @@
+<app-dashboard-content-holder>
+  <div class="row">
+    <div class="col-3">
+      <span>Username:</span>
+    </div>
+    <div class="col-3">
+      <span>Number of Api calls in last 10min:</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <app-dashboard-field fieldPlaceholder="Username" oiClass="oi-person" [(text)]="username">
+      </app-dashboard-field>
+    </div>
+    <div class="col-3"> 
+      <app-dashboard-field fieldPlaceholder="Number of Api calls in last 10min" [readonly]="true" oiClass="oi-external-link" [(text)]="numberOfApiCallsInLast10min">
+      </app-dashboard-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <span>Open Weather Map Api Key:</span>
+    </div>
+    <div class="col-3">
+      <span>Cache Invalidation Time [ms]:</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <app-dashboard-field fieldPlaceholder="Open Weather Map Api Key" oiClass="oi-map" [(text)]="openWeatherMapApiKey">
+      </app-dashboard-field>
+    </div>
+    <div class="col-3">
+      <app-dashboard-field fieldPlaceholder="Cache Invalidation Time [ms]" oiClass="oi-clock" [(text)]="cacheInvalidationTime">
+      </app-dashboard-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <span>&nbsp;</span>
+    </div>
+    <div class="col-3">
+      <button class="btn btn-danger" type="button" (click)="clearApiCache();">Clear Api Cache</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      &nbsp;
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <button class="btn btn-primary" type="button" (click)="confirm()">Confirm</button>
+    </div>
+    <div class="col-3">
+      <button class="btn btn-danger" type="button" (click)="populateFields()">Cancel</button>
+    </div>
+  </div>
+
+</app-dashboard-content-holder>

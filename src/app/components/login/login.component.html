@@ -1,0 +1,14 @@
+<iframe class="fullscreen" src="https://www.youtube.com/embed/4Qic1xziHPM?rel=0&amp;playlist=4Qic1xziHPM&amp;loop=1&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+
+<div class="login-modal-container {{ hasErrors ? 'with-error' : '' }}">
+  <h1>Login to Your Account</h1>
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="username" autofocus required name="username" placeholder="Username">
+    <input type="text" [(ngModel)]="key" name="key" required placeholder="OpenWeather Api Key">
+    <input type="submit" value="Login" [ngbPopover]="popContent" container="body" placement="bottom" popoverTitle="Error" #submitPopover="ngbPopover" triggers="manual">
+  </form>
+
+  <div class="error-info {{ hasErrors ? 'active' : ''}}">
+    {{loginError}}
+  </div>
+</div>
