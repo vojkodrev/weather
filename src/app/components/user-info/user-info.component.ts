@@ -30,16 +30,31 @@ export class UserInfoComponent implements OnInit {
     this.cacheInvalidationTime = localStorage.cacheInvalidationTime;
     this.openWeatherMapApiKey = localStorage.openWeatherMapApiKey;
     this.username = localStorage.username;
-    this.openWeatherMapApiKey = localStorage.openWeatherMapApiKey;
 
+    this.countNumberOfApiCallsInLast10Min();
+  }
+
+  countNumberOfApiCallsInLast10Min() {
     let counter = 0;
     for (let key in this.httpCacheService.cache) {
-      if (((new Date).getTime() - this.httpCacheService.cache[key].time) < 60000) {
+      if (((new Date).getTime() - this.httpCacheService.cache[key].time) < 600000) {
         counter++;
       }
     }
 
-    this.numberOfAPICallsInLast10min = counter;
+    this.numberOfApiCallsInLast10min = counter;
+  }
+
+  clearApiCache() {
+    this.httpCacheService.cache = {};
+
+    this.countNumberOfApiCallsInLast10Min();
+  }
+
+  confirm() {
+    localStorage.cacheInvalidationTime = this.cacheInvalidationTime;
+    localStorage.openWeatherMapApiKey = this.openWeatherMapApiKey;
+    localStorage.username = this.username;
   }
 
   ngOnInit() {
