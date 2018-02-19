@@ -4,7 +4,7 @@
     <div><h1>Weather</h1></div>
     <ul>
       <li class="{{navigationBarOptionsService.selected == 'dashboard' ? 'selected' : ''}}"><a routerLink="dashboard">Dashboard</a></li>
-      <li class="{{navigationBarOptionsService.selected == 'userInfo' ? 'selected' : ''}}"><a routerLink="userInfo">User</a></li>
+      <li class="{{navigationBarOptionsService.selected == 'userInfo' ? 'selected' : ''}}"><a routerLink="userInfo">User Information</a></li>
       <li (click)="logout()">Logout ({{localStorage.username}})</li>
     </ul>
   </div>

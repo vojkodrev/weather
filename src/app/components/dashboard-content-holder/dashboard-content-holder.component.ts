@@ -8,7 +8,7 @@ import { SafeStyle } from '@angular/platform-browser';
 })
 export class DashboardContentHolderComponent implements OnInit {
 
-  @Input() backgroundImage: SafeStyle;
+  @Input() contentStyle: SafeStyle;
 
   constructor() { }
 

@@ -7,7 +7,6 @@ import { OpenWeatherMapApiService, ICurrentWeatherInfo, IForecastInfo, IForecast
 import * as moment from 'moment';
 
 import {Chart, ChartPoint} from "chart.js";
-
 import "chartjs-plugin-datalabels";
 
 import { List } from 'linqts';
@@ -57,15 +56,35 @@ export class DashboardComponent implements OnInit {
     private sanitizer: DomSanitizer) {
 
     this.images = {
-      "Clouds": sanitizer.bypassSecurityTrustStyle("url('https://www.walldevil.com/wallpapers/a50/sky-wallpapers-sunny-pixel-paper-clouds-weather-wallpaper-large-rainbow.jpg')"),
-      "Sun": sanitizer.bypassSecurityTrustStyle("url('https://essexweather.org.uk/content/images/2018/02/local-2.jpg')"),
-      "Rain": sanitizer.bypassSecurityTrustStyle("url('http://www.ehowzit.co.za/wp-content/uploads/2016/07/rainy-weather.jpg')"),
-      "Snow": sanitizer.bypassSecurityTrustStyle("url('https://wagfarms.files.wordpress.com/2013/01/005.jpg')"),
-      "Clear": sanitizer.bypassSecurityTrustStyle("url('https://yim108.files.wordpress.com/2012/02/img_8715.jpg')"),
-      "Mist": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
-      "Fog": sanitizer.bypassSecurityTrustStyle("url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
-      "Default": sanitizer.bypassSecurityTrustStyle("url('http://www.flitemedia.com/wp-content/uploads/2015/06/NLC-Panorama-3rd-July-2014-3-49am.jpg')"),
-      "Haze": sanitizer.bypassSecurityTrustStyle("url('https://www.thenational.ae/image/policy:1.704756:1518668101/weather.JPG?f=16x9&w=1200&$p$f$w=4343fc7')"),
+      "Clouds": sanitizer.bypassSecurityTrustStyle(
+        "background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), " + 
+        "url('https://www.walldevil.com/wallpapers/a50/sky-wallpapers-sunny-pixel-paper-clouds-weather-wallpaper-large-rainbow.jpg')"),
+      
+      "Sun": sanitizer.bypassSecurityTrustStyle(
+        "background-image: url('https://essexweather.org.uk/content/images/2018/02/local-2.jpg')"),
+    
+      "Rain": sanitizer.bypassSecurityTrustStyle(
+        "background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), " + 
+        "url('https://report.az/storage/news/bc4a5bdaa7ab650d89d63f345be2c380/e1716b55-8504-4433-9395-ea94b3d6cef3.jpg')"),
+    
+      "Snow": sanitizer.bypassSecurityTrustStyle(
+        "background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), " + 
+        "url('https://i.ytimg.com/vi/gsfEE_cK4Bs/maxresdefault.jpg')"),
+    
+      "Clear": sanitizer.bypassSecurityTrustStyle(
+        "background-image: url('https://yim108.files.wordpress.com/2012/02/img_8715.jpg')"),
+    
+      "Mist": sanitizer.bypassSecurityTrustStyle(
+        "background-image: url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
+    
+      "Fog": sanitizer.bypassSecurityTrustStyle(
+        "background-image: url('https://theweatherclub.org.uk/sites/default/files/Andrew%20Bailey%20-%20Freezing%20Fog%20and%20Hoar%20Frost%20%283rd%20place%2C%20over%2016s%29%20-%20SMALL_0.jpg')"),
+    
+      "Default": sanitizer.bypassSecurityTrustStyle(
+        "background-image: url('http://www.flitemedia.com/wp-content/uploads/2015/06/NLC-Panorama-3rd-July-2014-3-49am.jpg')"),
+    
+      "Haze": sanitizer.bypassSecurityTrustStyle(
+        "background-image: url('https://www.thenational.ae/image/policy:1.704756:1518668101/weather.JPG?f=16x9&w=1200&$p$f$w=4343fc7')"),
     };
 
     navigationBarOptionsService.visible = true;
